@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.architecture.dao.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.cc.architecture.model.Product">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="code" jdbcType="VARCHAR" property="code" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,code,name,price
+    </sql>
+
+    <select id="getByCode" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM  t_product
+        WHERE code = #{code}
+    </select>
+</mapper>
